@@ -5,7 +5,7 @@ import Videos from './Videos';
 import Sidebar from './Sidebar';
 
 const Feed = () => {
-	const [selectedCategory, setSelectedCategory] = useState('New');
+	const [category, setCategory] = useState('New');
 
 	return (
 		<Stack sx={{ flexDirection: { sx: 'column', md: 'row' } }}>
@@ -16,16 +16,16 @@ const Feed = () => {
 					px: { sx: 0, md: 2 }
 				}}
 			>
-				<Sidebar />
+				<Sidebar selectedCategory={category} setSelectedCategory={setCategory} />
 
 				<Typography className='copyright' variant='body2' sx={{ mt: 1.5, color: '#fff' }}>
-					Copyright © 2022 YouTube
+					Copyright © 2022 DevTube
 				</Typography>
 			</Box>
 
 			<Box p={2} sx={{ overflowY: 'auto', height: '90vh', flex: 2 }}>
 				<Typography variant='h4' fontWeight='bold' mb={2} sx={{ color: 'white' }}>
-					{selectedCategory} <span style={{ color: '#FC1503' }}>videos</span>
+					{category} <span style={{ color: '#FC1503' }}>videos</span>
 				</Typography>
 
 				<Videos />
