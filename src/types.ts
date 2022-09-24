@@ -22,11 +22,17 @@ export type Snippet = {
 };
 
 export type Video = {
-	url: string;
 	id: {
 		videoId: string;
 		channelId: string;
 	};
 	kind: string;
 	snippet: Snippet;
+};
+
+export type Videos = {
+	items: Video[];
+	kind: string;
+	nextPageToken: string;
+	region: string;
 };

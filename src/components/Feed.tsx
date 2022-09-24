@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
-
-import Videos from './Videos';
-import Sidebar from './Sidebar';
 import { useQuery } from 'react-query';
+
+import Sidebar from './Sidebar';
+import Videos from './Videos';
 import { getVideos } from '../lib/api';
 import { Video } from '../types';
 
