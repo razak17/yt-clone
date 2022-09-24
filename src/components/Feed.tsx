@@ -3,9 +3,18 @@ import { Box, Stack, Typography } from '@mui/material';
 
 import Videos from './Videos';
 import Sidebar from './Sidebar';
+import { useQuery } from 'react-query';
+import { getVideos } from '../lib/api';
+import { Video } from '../types';
 
 const Feed = () => {
 	const [category, setCategory] = useState('New');
+
+	const { data: videos } = useQuery(['feedVideos', category], () =>
+		getVideos(`search?part=snippet&q=${category}`)
+	);
+
+	console.log({ videos });
 
 	return (
 		<Stack sx={{ flexDirection: { sx: 'column', md: 'row' } }}>
@@ -28,7 +37,7 @@ const Feed = () => {
 					{category} <span style={{ color: '#FC1503' }}>videos</span>
 				</Typography>
 
-				<Videos />
+				<Videos videos={videos as Video[]} />
 			</Box>
 		</Stack>
 	);

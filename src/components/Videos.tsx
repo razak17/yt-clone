@@ -9,7 +9,7 @@ const Videos = ({
 	direction
 }: {
 	videos: Video[];
-	direction: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+	direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
 }) => {
 	if (!videos?.length) return <Loader />;
 
