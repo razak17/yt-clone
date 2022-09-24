@@ -33,6 +33,7 @@ export type Video = {
 		viewCount: string;
 		hiddenSubscriberCount: boolean;
 		videoCount: string;
+		likeCount: string;
 	};
 };
 
