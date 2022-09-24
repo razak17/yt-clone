@@ -2,10 +2,10 @@ import { createContext, ReactNode, useContext } from 'react';
 import { RefetchOptions, RefetchQueryFilters, useQuery } from 'react-query';
 import CircularProgress from '@mui/material/CircularProgress';
 import { getVideos } from '../lib/api';
-import { Video } from '../types';
+import { Videos } from '../types';
 
 const VideoContext = createContext<{
-	videos: Video[] | undefined;
+	videos: Videos | undefined;
 	refetch?: <TPageData>(
 		/* eslint-disable-next-line no-unused-vars */
 		options?: (RefetchOptions & RefetchQueryFilters<TPageData>) | undefined
@@ -19,7 +19,7 @@ const VideoContextProvider = ({ children }: { children: ReactNode }) => {
 	);
 
 	return (
-		<VideoContext.Provider value={{ videos: data as Video[], refetch }}>
+		<VideoContext.Provider value={{ videos: data as Videos, refetch }}>
 			{isLoading ? <CircularProgress size='1rem' /> : children}
 		</VideoContext.Provider>
 	);

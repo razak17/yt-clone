@@ -5,12 +5,12 @@ import { useQuery } from 'react-query';
 import Sidebar from './Sidebar';
 import Videos from './Videos';
 import { getVideos } from '../lib/api';
-import { Video } from '../types';
+import { Videos as VideosType } from '../types';
 
 const Feed = () => {
 	const [category, setCategory] = useState('New');
 
-	const { data: videos } = useQuery(['feedVideos', category], () =>
+	const { data: videos, isLoading } = useQuery(['feedVideos', category], () =>
 		getVideos(`search?part=snippet&q=${category}`)
 	);
 
@@ -37,7 +37,7 @@ const Feed = () => {
 					{category} <span style={{ color: '#FC1503' }}>videos</span>
 				</Typography>
 
-				<Videos videos={videos as Video[]} />
+				<Videos isLoading={isLoading} videos={videos as VideosType} />
 			</Box>
 		</Stack>
 	);
