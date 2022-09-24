@@ -28,6 +28,12 @@ export type Video = {
 	};
 	kind: string;
 	snippet: Snippet;
+	statistics: {
+		subscriberCount: string;
+		viewCount: string;
+		hiddenSubscriberCount: boolean;
+		videoCount: string;
+	};
 };
 
 export type Videos = {
