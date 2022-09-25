@@ -6,8 +6,7 @@ A YouTube clone created using React and rapidAPI. Styled with Material UI Bootst
 
 - Search for videos
 - Watch videos
-- Like videos
-- Dislike videos
+- View channel Page
 
 ### Technologies used
 
