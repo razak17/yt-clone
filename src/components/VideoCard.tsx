@@ -10,6 +10,7 @@ import {
 } from '../constants';
 import { Video } from '../types';
 import { replaceApos } from '../utils/replaceApos';
+import { format } from 'timeago.js';
 
 const VideoCard = ({
 	video: {
@@ -46,6 +47,10 @@ const VideoCard = ({
 					<CheckCircleIcon sx={{ fontSize: '12px', color: 'gray', ml: '5px' }} />
 				</Typography>
 			</Link>
+
+			<Typography pt={2} variant='subtitle2' color='#FFF'>
+				{format(snippet.publishedAt.toString() as string)}
+			</Typography>
 		</CardContent>
 	</Card>
 );
