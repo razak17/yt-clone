@@ -8,6 +8,7 @@ const Navbar = () => (
 		direction='row'
 		alignItems='center'
 		p={2}
+		zIndex={9999}
 		sx={{ position: 'sticky', background: '#000', top: 0, justifyContent: 'space-between' }}
 	>
 		<Link to='/' style={{ display: 'flex', alignItems: 'center' }}>
