@@ -11,48 +11,56 @@ import {
 import { Video } from '../types';
 import { replaceApos } from '../utils/replaceApos';
 import { format } from 'timeago.js';
+import Loader from './Loader';
 
 const VideoCard = ({
+	isLoading,
 	video: {
 		id: { videoId },
 		snippet
 	}
 }: {
+	isLoading: boolean;
 	video: Video;
-}) => (
-	<Card
-		sx={{
-			width: { xs: '100%', sm: '358px', md: '320px' },
-			boxShadow: 'none',
-			borderRadius: 0
-		}}
-	>
-		<Link to={videoId ? `/watch/${videoId}` : `/video/cV2gBU6hKfY`}>
-			<CardMedia
-				component='img'
-				image={snippet.thumbnails.high.url || demoThumbnailUrl}
-				alt={snippet.title}
-				sx={{ width: { xs: '100%', sm: '358px' }, height: 180 }}
-			/>
-		</Link>
-		<CardContent sx={{ backgroundColor: '#1E1E1E', height: '106px' }}>
-			<Link to={videoId ? `/watch/${videoId}` : demoVideoUrl}>
-				<Typography variant='subtitle1' fontWeight='bold' color='#FFF'>
-					{replaceApos(snippet.title.slice(0, 60)) + '...' || demoVideoTitle.slice(0, 60)}
-				</Typography>
-			</Link>
-			<Link to={snippet.channelId ? `/channel/${snippet.channelId}` : demoChannelUrl}>
-				<Typography variant='subtitle2' color='gray'>
-					{snippet?.channelTitle || demoChannelTitle}
-					<CheckCircleIcon sx={{ fontSize: '12px', color: 'gray', ml: '5px' }} />
-				</Typography>
-			</Link>
+}) => {
+	if (isLoading) {
+		return <Loader />;
+	}
 
-			<Typography pt={2} variant='subtitle2' color='#FFF'>
-				{format(snippet.publishedAt.toString() as string)}
-			</Typography>
-		</CardContent>
-	</Card>
-);
+	return (
+		<Card
+			sx={{
+				width: { xs: '100%', sm: '358px', md: '320px' },
+				boxShadow: 'none',
+				borderRadius: 0
+			}}
+		>
+			<Link to={videoId ? `/watch/${videoId}` : `/video/cV2gBU6hKfY`}>
+				<CardMedia
+					component='img'
+					image={snippet.thumbnails.high.url || demoThumbnailUrl}
+					alt={snippet.title}
+					sx={{ width: { xs: '100%', sm: '358px' }, height: 180 }}
+				/>
+			</Link>
+			<CardContent sx={{ backgroundColor: '#1E1E1E', height: '106px' }}>
+				<Link to={videoId ? `/watch/${videoId}` : demoVideoUrl}>
+					<Typography variant='subtitle1' fontWeight='bold' color='#FFF'>
+						{replaceApos(snippet.title.slice(0, 60)) + '...' || demoVideoTitle.slice(0, 60)}
+					</Typography>
+				</Link>
+				<Link to={snippet.channelId ? `/channel/${snippet.channelId}` : demoChannelUrl}>
+					<Typography variant='subtitle2' color='gray'>
+						{snippet?.channelTitle || demoChannelTitle}
+						<CheckCircleIcon sx={{ fontSize: '12px', color: 'gray', ml: '5px' }} />
+					</Typography>
+				</Link>
+				<Typography pt={2} variant='subtitle2' color='#FFF'>
+					{} {format(snippet.publishedAt)}
+				</Typography>
+			</CardContent>
+		</Card>
+	);
+};
 
 export default VideoCard;
