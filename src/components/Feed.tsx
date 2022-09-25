@@ -21,13 +21,12 @@ const Feed = () => {
 			<Box
 				sx={{
 					height: { sx: 'auto', md: '92vh' },
-					borderRight: '1px solid #3d3d3d',
-					px: { sx: 0, md: 2 }
+					borderRight: '1px solid #3d3d3d'
 				}}
 			>
 				<Sidebar selectedCategory={category} setSelectedCategory={setCategory} />
 
-				<Typography className='copyright' variant='body2' sx={{ mt: 1.5, color: '#fff' }}>
+				<Typography className='copyright' variant='body2' sx={{ mt: 1.5, pl: 2, pr: 2, color: '#fff' }}>
 					Copyright © 2022 DevTube
 				</Typography>
 			</Box>

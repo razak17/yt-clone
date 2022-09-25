@@ -37,6 +37,10 @@ export type Video = {
 	};
 };
 
+export type VideoDetail = {
+	items: Video[];
+};
+
 export type Videos = {
 	items: Video[];
 	kind: string;

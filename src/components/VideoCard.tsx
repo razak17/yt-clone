@@ -26,7 +26,7 @@ const VideoCard = ({
 			borderRadius: 0
 		}}
 	>
-		<Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`}>
+		<Link to={videoId ? `/watch/${videoId}` : `/video/cV2gBU6hKfY`}>
 			<CardMedia
 				component='img'
 				image={snippet.thumbnails.high.url || demoThumbnailUrl}

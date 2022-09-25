@@ -14,18 +14,21 @@ const VideoDetail = () => {
 
 	const { data: videoDetail } = useQuery(['videoDetail', id], () => getVideoDetails(id as string));
 
-	const { data: videos, isLoading } = useQuery(['videoDetailVideo', id], () =>
+	const { data: videoDetailVideo, isLoading } = useQuery(['videoDetailVideo', id], () =>
 		getVideos(`search?part=snippet&relatedToVideoId=${id}&type=video`)
 	);
 
-	if (!videoDetail?.snippet) return <Loader />;
+	console.log({ videoDetail });
+	console.log({ videoDetailVideo });
 
-	console.log(videoDetail);
+	if (isLoading) return <Loader />;
+
+	if (!videoDetail?.items) return <h1>Video Not Found</h1>;
 
 	const {
 		snippet: { title, channelId, channelTitle },
 		statistics: { viewCount, likeCount }
-	} = videoDetail;
+	} = videoDetail.items[0];
 
 	return (
 		<Box minHeight='95vh'>
@@ -59,7 +62,7 @@ const VideoDetail = () => {
 					</Box>
 				</Box>
 				<Box px={2} py={{ md: 1, xs: 5 }} justifyContent='center' alignItems='center'>
-					<Videos isLoading={isLoading} videos={videos as VideosType} direction='column' />
+					<Videos isLoading={isLoading} videos={videoDetailVideo as VideosType} direction='column' />
 				</Box>
 			</Stack>
 		</Box>
