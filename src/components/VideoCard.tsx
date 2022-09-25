@@ -1,13 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Typography, Card, CardContent, CardMedia } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import {
-	demoThumbnailUrl,
-	demoVideoUrl,
-	demoVideoTitle,
-	demoChannelUrl,
-	demoChannelTitle
-} from '../constants';
 import { Video } from '../types';
 import { replaceApos } from '../utils/replaceApos';
 import { format } from 'timeago.js';
@@ -35,23 +28,23 @@ const VideoCard = ({
 				borderRadius: 0
 			}}
 		>
-			<Link to={videoId ? `/watch/${videoId}` : `/video/cV2gBU6hKfY`}>
+			<Link to={`/watch/${videoId}`}>
 				<CardMedia
 					component='img'
-					image={snippet.thumbnails.high.url || demoThumbnailUrl}
+					image={snippet.thumbnails.high.url}
 					alt={snippet.title}
 					sx={{ width: { xs: '100%', sm: '358px' }, height: 180 }}
 				/>
 			</Link>
 			<CardContent sx={{ backgroundColor: '#1E1E1E', height: '106px' }}>
-				<Link to={videoId ? `/watch/${videoId}` : demoVideoUrl}>
+				<Link to={`/watch/${videoId}`}>
 					<Typography variant='subtitle1' fontWeight='bold' color='#FFF'>
-						{replaceApos(snippet.title.slice(0, 60)) + '...' || demoVideoTitle.slice(0, 60)}
+						{replaceApos(snippet.title.slice(0, 60)) + '...'}
 					</Typography>
 				</Link>
-				<Link to={snippet.channelId ? `/channel/${snippet.channelId}` : demoChannelUrl}>
+				<Link to={`/channel/${snippet.channelId}`}>
 					<Typography variant='subtitle2' color='gray'>
-						{snippet?.channelTitle || demoChannelTitle}
+						{snippet?.channelTitle}
 						<CheckCircleIcon sx={{ fontSize: '12px', color: 'gray', ml: '5px' }} />
 					</Typography>
 				</Link>

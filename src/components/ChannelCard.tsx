@@ -1,7 +1,6 @@
 import { Box, CardContent, CardMedia, Typography } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom';
-import { demoProfilePicture } from '../constants';
 import { Video } from '../types';
 import { toLocale } from '../utils/toLocale';
 
@@ -37,7 +36,7 @@ const ChannelCard = ({
 			>
 				<CardMedia
 					component='img'
-					image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
+					image={channelDetail?.snippet?.thumbnails?.high?.url}
 					alt={channelDetail?.snippet?.title}
 					sx={{
 						borderRadius: '50%',
